@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+  postgres:
+    build: .
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - ./data:/var/lib/postgresql/data
+      - ./dump:/var/lib/postgresql/dump
+      - ./scripts:/scripts
+    ports:
+      - "5434:5432"
